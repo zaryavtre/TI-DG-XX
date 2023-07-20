@@ -1,5 +1,3 @@
-import { dogs } from "./dogData";
-
 class Dog {
     constructor(data) {
         Object.assign(this, data)
@@ -18,13 +16,12 @@ class Dog {
                         </div>
                     <div class="bio-wrapper">
                         <p class="dog-bio">${bio}</p>
-                        
-
+                        </div>
                 </div>
-
+            </div>
         `
     }
 }
 
 
-export {dog}
+export {Dog}

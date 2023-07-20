@@ -1,19 +1,11 @@
 import {dogs} from './dogData.js'
+import {Dog} from './dog.js'
+import {setBaseHtml} from './utils.js'
 
-document.addEventListener('DOMContentLoaded', setBaseHtml())
+document.addEventListener('DOMContentLoaded', setBaseHtml(), renderDog())
 
-function setBaseHtml() {
-    let template = ''
-    template = `
-        <div class="tin-main">
-            <div class="top-bar">
-                <img class="bar-icon" src="/images/profile.svg">
-                <div class="paw-wrapper"><img class="bar-icon" src="/images/paw.svg"></div>
-                <img class="bar-icon" src="/images/chat.svg">
-            </div>
-            <div class="dog-wrapper" id="dog-component"></div>
-        </div>
-    `
-
-    document.querySelector('.main').innerHTML = template
+function renderDog() {
+    const dogTemplate = new Dog(dogs[0])
+    document.querySelector('.dog-wrapper').innerHTML = dogTemplate.getDogeHtml()
+    
 }
