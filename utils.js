@@ -9,8 +9,8 @@ function setBaseHtml() {
             </div>
             <div class="dog-wrapper" id="dog-component"></div>
             <div class="like-btn-wrapper">
-                <button class="swipe-btn" id="like"><img class="swipe-icon" src="images/like_btn.svg"></button>
-                <button class="swipe-btn" id="nope"><img class="swipe-icon" src="images/nope_btn.svg"></button>
+                <button class="swipe-btn" id="like" data-like="likebtn"><img class="swipe-icon" src="images/like_btn.svg"></button>
+                <button class="swipe-btn" id="nope" data-nope="nopebtn"><img class="swipe-icon" src="images/nope_btn.svg"></button>
             </div>
         </div>
     `

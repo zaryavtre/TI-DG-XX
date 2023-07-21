@@ -74,7 +74,8 @@ button {
 
 .dog-age {
     font-size: 18px;
-    font-weight: 500
+    font-weight: 500;
+    mix-blend-mode: difference;
 }
 
 .dog-bio {
