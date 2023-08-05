@@ -1,10 +1,10 @@
 class Dog {
-    constructor(data) {
-        Object.assign(this, data)
-    }
-    getDogeHtml() {
-        const {name, avatar, age, bio} = this
-        return `
+  constructor(data) {
+    Object.assign(this, data)
+  }
+  getDogeHtml() {
+    const { name, avatar, age, bio } = this
+    return `
             <div class="main-dog">
                 <div class="dog-pic-wrapper">
                     <img class="dog-pic" src="${avatar}">
@@ -23,12 +23,14 @@ class Dog {
                 </div>
             </div>
         `
-    }
-    setDogStatus(bool) {
-        this.hasBeenLiked = bool
-        this.hasBeenSwiped = true
-    }
+  }
+  setDogStatus(bool) {
+    this.hasBeenLiked = bool
+    this.hasBeenSwiped = true
+  }
+  logDogsData() {
+    console.log(this.data)
+  }
 }
 
-
-export {Dog}
+export { Dog }
