@@ -4,33 +4,44 @@ import {setBaseHtml} from './utils.js'
 
 //let dogsArr = [0, 1, 2]
 let currentDogIndex = 0
+let currentDog = new Dog(dogs[currentDogIndex])
 
 document.addEventListener('DOMContentLoaded', setBaseHtml(), renderDog())
 document.addEventListener('click', function(e) {
-    const likeButton = e.target.closest('.swipe-btn');
+    const likeButton = e.target.closest('.swipe-btn')
+    const pawWrapper = e.target.closest('.paw-wrapper')
     if (likeButton && likeButton.dataset.like) {
-        swipe();
+        swipedHeart()
+    } 
+    if(pawWrapper) {
+        restartDogs()
     }
 })
 
+function swipedHeart() {
+    currentDog.setDogStatus(true)
+    swipe()
+}
+
 function getNewDog() {
-    /* const nextDog = dogs[dogsArr.shift()]
-    return nextDog ? new Dog(nextDog) : {} */
     const nextDog = dogs[currentDogIndex]
-    currentDogIndex = (currentDogIndex + 1) % dogs.length
+    currentDogIndex = (currentDogIndex + 1)
     return nextDog ? new Dog(nextDog) : {} 
 }
 
-function swipe() {
+function restartDogs() {
+    currentDogIndex = 0
     renderDog()
-    console.log(dogs)
+}
 
-/*     dogs.hasBeenSwiped = !dogs.hasBeenSwiped
-    if(dogs.hasBeenSwiped) {
-        getNewDog()
-        renderDog()
-        console.log(dogsArr)
-    } */
+function swipe() {
+    if(currentDog.hasBeenLiked) {
+        document.querySelector('.like-dislike').classList.toggle('hidden-icon')
+        setInterval(() => {
+            renderDog()
+        }, 3000)
+    }
+
 }
 
 function renderDog() {

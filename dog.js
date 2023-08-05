@@ -16,10 +16,17 @@ class Dog {
                         </div>
                     <div class="bio-wrapper">
                         <p class="dog-bio">${bio}</p>
-                        </div>
+                    </div>
+                </div>
+                <div class="like-dislike hidden-icon">
+                    <img src="images/like_icon.png">
                 </div>
             </div>
         `
+    }
+    setDogStatus(bool) {
+        this.hasBeenLiked = bool
+        this.hasBeenSwiped = true
     }
 }
 
