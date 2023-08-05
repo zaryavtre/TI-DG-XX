@@ -34,6 +34,7 @@ function getNewDog() {
 
 function restartDogs() {
   currentDogIndex = 0
+  getNewDog()
   renderDog()
 }
 
