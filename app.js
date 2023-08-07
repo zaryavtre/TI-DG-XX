@@ -18,11 +18,26 @@ document.addEventListener('click', function (e) {
   if (pawWrapper) {
     restartDogs()
   }
+  if (likeButton && likeButton.dataset.nope) {
+    swipedCross()
+  }
 })
+
+function restartDogs() {
+  currentDogIndex = 0
+  currentDog = new Dog(dogs[currentDogIndex])
+  renderDog()
+}
 
 function swipedHeart() {
   console.log(currentDog)
   currentDog.setDogStatus(true)
+  swipe()
+}
+
+function swipedCross() {
+  console.log(currentDog)
+  currentDog.setDogStatus(false)
   swipe()
 }
 
@@ -32,15 +47,14 @@ function getNewDog() {
   renderDog()
 }
 
-function restartDogs() {
-  currentDogIndex = 0
-  getNewDog()
-  renderDog()
-}
-
 function swipe() {
   if (currentDog.hasBeenLiked) {
-    document.querySelector('.like-dislike').classList.toggle('hidden-icon')
+    document.querySelector('.heart').classList.toggle('hidden-icon')
+    setTimeout(() => {
+      getNewDog()
+    }, 1500)
+  } else if (!currentDog.hasBeenLiked) {
+    document.querySelector('.cross').classList.toggle('hidden-icon')
     setTimeout(() => {
       getNewDog()
     }, 1500)

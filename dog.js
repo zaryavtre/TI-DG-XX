@@ -18,8 +18,9 @@ class Dog {
                         <p class="dog-bio">${bio}</p>
                     </div>
                 </div>
-                <div class="like-dislike hidden-icon">
-                    <img src="images/like_icon.png">
+                <div class="like-dislike">
+                    <img class="heart hidden-icon" src="images/like_icon.png">
+                    <img class="cross hidden-icon" src="images/nope_icon.png"
                 </div>
             </div>
         `
