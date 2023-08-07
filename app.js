@@ -5,6 +5,7 @@ import { setBaseHtml } from './utils.js'
 //let dogsArr = [0, 1, 2]
 let currentDogIndex = 0
 let currentDog = new Dog(dogs[currentDogIndex])
+const maxDogIndex = dogs.length - 1
 
 document.addEventListener('DOMContentLoaded', () => {
   setBaseHtml(), renderDog()
@@ -30,35 +31,51 @@ function restartDogs() {
 }
 
 function swipedHeart() {
-  console.log(currentDog)
   currentDog.setDogStatus(true)
   swipe()
 }
 
 function swipedCross() {
-  console.log(currentDog)
   currentDog.setDogStatus(false)
   swipe()
 }
 
 function getNewDog() {
-  currentDogIndex += 1
-  currentDog = new Dog(dogs[currentDogIndex])
-  renderDog()
+  if (currentDogIndex < maxDogIndex) {
+    currentDogIndex += 1
+    currentDog = new Dog(dogs[currentDogIndex])
+    renderDog()
+  } else {
+    endState()
+  }
 }
 
 function swipe() {
-  if (currentDog.hasBeenLiked) {
-    document.querySelector('.heart').classList.toggle('hidden-icon')
-    setTimeout(() => {
-      getNewDog()
-    }, 1500)
-  } else if (!currentDog.hasBeenLiked) {
-    document.querySelector('.cross').classList.toggle('hidden-icon')
-    setTimeout(() => {
-      getNewDog()
-    }, 1500)
+  console.log()
+  if (currentDogIndex <= maxDogIndex) {
+    if (currentDog.hasBeenLiked) {
+      document.querySelector('.heart').classList.toggle('hidden-icon')
+      setTimeout(() => {
+        getNewDog()
+      }, 800)
+    }
+    if (!currentDog.hasBeenLiked) {
+      document.querySelector('.cross').classList.toggle('hidden-icon')
+      setTimeout(() => {
+        getNewDog()
+      }, 800)
+    }
+  } else {
+    endState()
   }
+}
+
+function endState() {
+  document.querySelector('.like-btn-wrapper').style.display = 'none'
+  document.querySelector('.dog-wrapper').innerHTML = `
+    <div>
+      <h2 style="text-align: center; font-size: 2em;">No more dogs in your area 🐕</h2>
+    </div>`
 }
 
 function renderDog() {
